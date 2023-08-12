@@ -15,11 +15,13 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
+  host: localhost
 
 development:
   <<: *default
-  database: encrypt_me_development
+  host: localhost
+  database: encrypt-me
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,6 +52,6 @@ test:
 #
 production:
   <<: *default
-  database: encrypt_me_production
-  username: encrypt_me
-  password: <%= ENV["ENCRYPT_ME_DATABASE_PASSWORD"] %>
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
