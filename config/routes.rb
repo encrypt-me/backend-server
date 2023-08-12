@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/api/accounts/:id', to: 'api/account#get'
+  post '/api/accounts/create', to: 'api/account#create'
 end
