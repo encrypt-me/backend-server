@@ -3,11 +3,11 @@ class Api::AccountController < Api::BaseController
   #   curl -X POST -H "Content-Type: application/json" -d '{"email": "john@example.com"}' http://localhost:3000/api/accounts/get
   def get
     account = Account.find_by(email: get_params[:email])
-    unless account
-      return render_error('Account not found.')
+    if account
+      render json: { public_key: account.public_key }
+    else
+      render json: { public_key: EncryptMeHelper.get_random_public_key }
     end
-
-    render json: { public_key: account.public_key }
   end
 
   # example:
