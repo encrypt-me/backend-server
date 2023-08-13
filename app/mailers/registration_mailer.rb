@@ -4,9 +4,13 @@ class RegistrationMailer < ActionMailer::Base
   include EncryptMeHelper
   def validation_code_message
     @registration = params[:registration]
-    @encrypted_code = EncryptMeHelper.encrypt_with_public_key(@registration.public_key, @registration.code)
+    encrypted = EncryptMeHelper.encrypt_with_public_key(@registration.public_key, @registration.code)
 
-    @encrypted_code = @encrypted_code.gsub("\n", "</br>")
+    split = encrypted.split("\n")
+    @encrypted_message = ""
+    split.each do |line|
+      @encrypted_message += "<div>#{line}</div>"
+    end
 
     mail(to: @registration.email, subject: "Public Key Validation")
   end
