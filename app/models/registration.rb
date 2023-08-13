@@ -17,7 +17,6 @@ class Registration < BaseRecord
     self.code = SecureRandom.hex(32)
     self.save
 
-    # TODO: code should be encrypted with public key to validate whole process
     RegistrationMailer.with(registration: self).validation_code_message.deliver_now
   end
 end
