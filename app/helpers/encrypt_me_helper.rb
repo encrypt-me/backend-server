@@ -17,9 +17,8 @@ module EncryptMeHelper
   def self.get_random_public_key
     path = EncryptMeHelper.get_encrypt_me_path
     command = "python3 #{path} -gpk"
+
     IO.popen(command, 'r+') do |pipe|
-      pipe.puts(public_key)
-      pipe.close_write
       return pipe.read
     end
   end
