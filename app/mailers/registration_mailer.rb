@@ -1,5 +1,5 @@
 class RegistrationMailer < ActionMailer::Base
-  default from: "no-reply@encrypt-me.org"
+  default from: "Encrypt Me <no-ryply@encrypt-me.org>"
 
   def validation_code_message
     @registration = params[:registration]
