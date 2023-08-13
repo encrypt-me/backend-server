@@ -1,5 +1,16 @@
 class Api::AccountController < Api::BaseController
   # example:
+  #   curl -X POST -H "Content-Type: application/json" -d '{"email": "john@example.com"}' http://localhost:3000/api/accounts/get
+  def get
+    account = Account.find_by(email: get_params[:email])
+    unless account
+      return render_error('Account not found.')
+    end
+
+    render json: { public_key: account.public_key }
+  end
+
+  # example:
   #   curl -X POST -H "Content-Type: application/json" -d '{"email": "john@example.com", "public_key": "data"}' http://localhost:3000/api/accounts/registration
   def registration
     ActiveRecord::Base.transaction do
@@ -46,5 +57,9 @@ class Api::AccountController < Api::BaseController
   end
   def validation_params
     params.permit(:email, :code)
+  end
+
+  def get_params
+    params.permit(:email)
   end
 end

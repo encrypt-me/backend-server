@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   post '/api/accounts/registration', to: 'api/account#registration'
   post '/api/accounts/validate', to: 'api/account#validate'
+  post '/api/accounts/get', to: 'api/account#get'
 end
