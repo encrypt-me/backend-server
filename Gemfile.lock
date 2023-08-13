@@ -66,6 +66,11 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -78,11 +83,24 @@ GEM
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    haml (6.1.1)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    haml-rails (2.1.0)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6)
+      railties (>= 5.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -111,6 +129,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
+    public_suffix (5.0.1)
     puma (5.6.6)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -148,7 +167,9 @@ GEM
     rake (13.0.6)
     reline (0.3.7)
       io-console (~> 0.5)
+    temple (0.10.0)
     thor (1.2.2)
+    tilt (2.0.11)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -162,8 +183,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate
   bootsnap
   debug
+  haml-rails
+  letter_opener
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.7)
